@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServicioTarjetas", "WcfServicioTarjetas\WcfServicioTarjetas.csproj", "{25839FA1-65DD-456B-876E-1E06AB962CCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplicacionTarjetas", "AplicacionTarjetas\AplicacionTarjetas.csproj", "{F54D08C3-5DFD-4EC2-A36A-B3F870F55559}"
+	ProjectSection(ProjectDependencies) = postProject
+		{25839FA1-65DD-456B-876E-1E06AB962CCF} = {25839FA1-65DD-456B-876E-1E06AB962CCF}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25839FA1-65DD-456B-876E-1E06AB962CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25839FA1-65DD-456B-876E-1E06AB962CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25839FA1-65DD-456B-876E-1E06AB962CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25839FA1-65DD-456B-876E-1E06AB962CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F54D08C3-5DFD-4EC2-A36A-B3F870F55559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F54D08C3-5DFD-4EC2-A36A-B3F870F55559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F54D08C3-5DFD-4EC2-A36A-B3F870F55559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F54D08C3-5DFD-4EC2-A36A-B3F870F55559}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D409B73-98C3-4F59-B851-F8BDC6565720}
+	EndGlobalSection
+EndGlobal
