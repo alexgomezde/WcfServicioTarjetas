@@ -29,14 +29,18 @@ namespace WcfServicioTarjetas
             using (TarjetasEntities contexto = new TarjetasEntities())
             {
 
-                string substring = numeroTarjeta.Substring(0, 4);
-
-                var listaEmisores = (from EMISORs in contexto.EMISORs select EMISORs).OrderByDescending(emisor => emisor.EMI_PREFIJO);
-
-                foreach (EMISOR emisor in listaEmisores)
+                if (numeroTarjeta.Length > 12)
                 {
-                    if (substring.StartsWith(emisor.EMI_PREFIJO))
-                        return emisor.EMI_DESCRIPCION;
+                    string substring = numeroTarjeta.Substring(0, 4);
+
+                    var listaEmisores = (from EMISORs in contexto.EMISORs select EMISORs).OrderByDescending(emisor => emisor.EMI_PREFIJO);
+
+                    foreach (EMISOR emisor in listaEmisores)
+                    {
+                        if (substring.StartsWith(emisor.EMI_PREFIJO))
+                            return emisor.EMI_DESCRIPCION;
+                    }
+
                 }
 
                 return "Emisor Desconocido";
@@ -55,17 +59,24 @@ namespace WcfServicioTarjetas
 
         public string ValidarTarjeta(string numeroTarjeta)
         {
+
             using (TarjetasEntities contexto = new TarjetasEntities())
             {
                 var tarjeta = (from TARJETAs in contexto.TARJETAs where TARJETAs.TAR_NUMERO == numeroTarjeta select TARJETAs).FirstOrDefault<TARJETA>();
 
                 DateTime fechaActual = DateTime.Now;
-                string estado = tarjeta.TAR_ESTADO;
 
-                if (estado.ToLower().Equals("activa") && tarjeta.TAR_FECHA_VENCIMIENTO >= fechaActual)
-                    return "Tarjeta Válida";
+
+                if (tarjeta != null)
+                {
+                    string estado = tarjeta.TAR_ESTADO;
+
+                    if (estado.ToLower().Equals("activa") && tarjeta.TAR_FECHA_VENCIMIENTO >= fechaActual)
+                        return "Tarjeta Válida";
+                }
 
                 return "Tarjeta Inválida";
+
             }
         }
 

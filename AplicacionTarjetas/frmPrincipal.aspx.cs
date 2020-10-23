@@ -28,7 +28,7 @@ namespace AplicacionTarjetas
 
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtNumeroTarjeta.Text))
+            if (!string.IsNullOrEmpty(txtNumeroTarjeta.Text) && txtNumeroTarjeta.Text.Length > 12)
             {
                 using (ServicioTarjetas.EmisorClient cliente = new ServicioTarjetas.EmisorClient())
                 {
@@ -43,10 +43,15 @@ namespace AplicacionTarjetas
                     {
                         var tarjeta = cliente.ObtenerInformacionTarjeta(txtNumeroTarjeta.Text);
 
-                        var infoTarjeta = new[] { tarjeta };
+                        if (tarjeta != null)
+                        {
+                            var infoTarjeta = new[] { tarjeta };
 
-                        dgvTarjeta.DataSource = infoTarjeta;
-                        dgvTarjeta.DataBind();
+                            dgvTarjeta.DataSource = infoTarjeta;
+                            dgvTarjeta.DataBind();
+
+                        }else
+                            lblResultado.Text = "Tarjeta no se encuentra registrada";
                     }
 
                     if (index == 2)
@@ -54,7 +59,7 @@ namespace AplicacionTarjetas
                 }
             }
             else
-                lblResultado.Text = "Por favor ingrese un número de tarjeta para continuar";
+                lblResultado.Text = "Por favor ingrese un número de tarjeta válido que sea mayor a 13 para continuar";
         }
     }
 }
